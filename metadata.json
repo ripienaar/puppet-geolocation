@@ -1,0 +1,10 @@
+{
+  "author": "R.I.Pienaar <rip@devco.net>",
+  "license": "ASL 2.0",
+  "name": "ripienaar-geolocation",
+  "project_page": "https://github.com/ripienaar/puppet-geolocation",
+  "source": "https://github.com/ripienaar/puppet-geolocation.git",
+  "summary": "Facter facts based on the output from freegeoip.net",
+  "version": "0.0.1",
+  "dependencies": []
+}
