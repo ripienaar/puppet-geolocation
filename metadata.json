@@ -5,6 +5,6 @@
   "project_page": "https://github.com/ripienaar/puppet-geolocation",
   "source": "https://github.com/ripienaar/puppet-geolocation.git",
   "summary": "Facter facts based on the output from freegeoip.net",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": []
 }

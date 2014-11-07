@@ -3,12 +3,17 @@ require 'open-uri'
 require 'timeout'
 
 begin
-  Timeout::timeout(2) do
-    geoipinfo = JSON.parse(open("http://freegeoip.net/json/").read)
+  Timeout::timeout(5) do
+    geoipinfo = nil
 
-    geoipinfo.each do |k, v|
-      next if k == "ip"
-      Facter.add("geo_#{k.downcase}") { setcode { v } }
+    ["country_code", "country_name", "region_code", "region_name", "city", "zipcode", "latitude", "longitude", "metro_code", "area_code"].each do |key|
+      Facter.add("geo_#{key.downcase}") do
+        setcode do
+          geoipinfo ||= JSON.parse(open("http://freegeoip.net/json/").read)
+
+          ["", nil].include?(geoipinfo[key]) ? "unknown" : geoipinfo[key]
+        end
+      end
     end
   end
 rescue Exception => e
