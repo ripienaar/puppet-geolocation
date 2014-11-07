@@ -28,8 +28,14 @@ to install it on sensitive machines, or 1000s of machines at a time.
 You could consider hosting your own instance of the app though, the source
 is @ https://github.com/fiorix/freegeoip
 
-I'll add some caching to it at some point to make it more suitable
-for larger installs
+The fact writes a cache into your OS temp directory and if the file exist
+on a future run it will just read that and not query the Remote API.  On
+my machine that is ```/tmp/freegeoip_facter.pstore```.
+
+Facter does not really have a way for facts to have configuration so the
+url for the freegeoip service is hard coded and the tempdir is whatever
+your system sets via ruby's tempdir module. So ths will work on windows
+or unix and honor things like TMPDIR environment variables.
 
 Contact?
 --------
